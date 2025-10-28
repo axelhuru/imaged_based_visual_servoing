@@ -1,0 +1,33 @@
+<sdf version="1.6">
+  <model name="red_ball">
+    <static>false</static>  
+    <link name="ball_link">
+      <visual name="visual">
+        <geometry>
+          <sphere>
+            <radius>0.05</radius>  
+          </sphere>
+        </geometry>
+        <material>
+	<ambient>1 0 0 1</ambient>
+  	<diffuse>1 0 0 1</diffuse>
+  	<specular>0.8 0 0 1</specular>
+  	<emissive>0.3 0 0 1</emissive>	
+        </material>
+      </visual>
+      <collision name="collision">
+        <geometry>
+          <sphere>
+            <radius>0.05</radius>
+          </sphere>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass>0.1</mass> 
+        <inertia>
+          <ixx>0.001</ixx><iyy>0.001</iyy><izz>0.001</izz>
+        </inertia>
+      </inertial>
+    </link>
+  </model>
+</sdf>
