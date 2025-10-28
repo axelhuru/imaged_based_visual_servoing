@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<library path="my_simple_controllers">
+
+  <class name="my_simple_controllers/StateController" 
+         type="my_simple_controllers::StateController" 
+         base_class_type="controller_interface::ControllerInterface">
+    <description>
+      Simple forward kinematic controller that publishes end effector pose to TF
+    </description>
+  </class>
+<class name="my_simple_controllers/CartesianVelocityController"
+         type="my_simple_controllers::CartesianVelocityController"
+         base_class_type="controller_interface::ControllerInterface">
+    <description>
+      A controller for Cartesian velocity tracking.
+    </description>
+  </class>  
+</library>

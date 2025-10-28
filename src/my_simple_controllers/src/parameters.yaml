@@ -1,0 +1,61 @@
+my_simple_controllers:
+  joints: {
+    type: string_array,
+    default_value: [],
+    description: "Names of joints used by the controller",
+    read_only: true,
+    validation: {
+      unique<>: null,
+    }
+  }
+  state_interfaces: {
+    type: string_array,
+    default_value: [],
+    description: "Names of state interfaces to claim",
+    read_only: true,
+    validation: {
+      unique<>: null,
+    }
+  }
+  state_publish_rate: {
+    type: double,
+    default_value: 100.0,
+    description: "Frequency to publish state messages",
+    read_only: true,
+    validation: {
+      gt_eq: 1.0
+    }
+  }
+  command_interfaces: {
+    type: string_array,
+    default_value: [],
+    description: "Names of command interfaces to claim",
+    read_only: true,
+    validation: {
+      unique<>: null,
+    }
+  }
+  kp: {
+    type: double_array,
+    default_value: [10.0, 10.0, 10.0, 5.0, 5.0, 5.0],
+    description: "Proportional gains for the 6 DOFs (x,y,z,rx,ry,rz)",
+    read_only: false,
+    validation: {
+      fixed_size<double>: 6,
+    }
+  }
+  command_topic: {
+    type: string,
+    default_value: "cartesian_velocity_command",
+    description: "Topic for receiving geometry_msgs/Twist commands",
+    read_only: true
+  }
+  command_timeout: {
+    type: double,
+    default_value: 0.2,
+    description: "Timeout in seconds to wait for new commands before stopping",
+    read_only: false,
+    validation: {
+      gt: 0.0
+    }
+  }
