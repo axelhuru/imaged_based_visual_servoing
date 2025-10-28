@@ -2,7 +2,45 @@
 
 IBVS demo where a camera mounted on the Panda robot's end-effector tracks and follows a red ball.
 
+
+Building VIsP from source is required to build project, this sequence worked for us:
 ## Setup
+```bash
+sudo apt install -y ros-humble-vision-msgs ros-humble-image-transport \
+ros-humble-cv-bridge ros-humble-rclcpp ros-humble-geometry-msgs
+
+
+mkdir -p ~/visp_ws/src
+cd ~/visp_ws/src
+git clone https://github.com/lagadic/visp.git
+cd visp
+git checkout 3.6.1  
+
+
+cd ~/visp_ws
+mkdir build
+cd build
+cmake ../src/visp \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_EXAMPLES=ON \
+    -DUSE_FFMPEG=ON \
+    -DUSE_OPENGL=ON \
+    -DUSE_QT=OFF \
+    -DBUILD_PYTHON_BINDINGS=OFF \
+    -DCMAKE_INSTALL_PREFIX=/usr/local
+
+
+make -j$(nproc)
+sudo make install
+
+
+cd ~/visp_ws
+source /opt/ros/humble/setup.bash
+colcon build --symlink-install
+
+
+```
+
 
 ### Install Dependencies
 
